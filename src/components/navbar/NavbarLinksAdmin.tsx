@@ -17,7 +17,7 @@ import React from 'react';
 // Assets
 import navImage from 'img/layout/Navbar.png';
 import { MdNotificationsNone, MdInfoOutline } from 'react-icons/md';
-import { IoMdMoon, IoMdSunn } from 'react-icons/io';
+import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { FaEthereum, FiChevronDown } from 'react-icons/fa';
 import routes from 'routes';
 import { Image } from 'components/image/Image';

@@ -18,7 +18,7 @@ import React from 'react';
 import navImage from 'img/layout/Navbar.png';
 import { MdNotificationsNone, MdInfoOutline } from 'react-icons/md';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
-import { FaEthereum, FiChevronDown } from 'react-icons/fa';
+import { FaEthereum } from 'react-icons/fa';
 import routes from 'routes';
 import { Image } from 'components/image/Image';
 export default function HeaderLinks(props: { secondary: boolean }) {

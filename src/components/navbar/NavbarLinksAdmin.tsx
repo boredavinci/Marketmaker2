@@ -66,7 +66,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
 			p='10px'
 			borderRadius='30px'
 			boxShadow={shadow}>
-			<Button>
+			<Button onClick={connectDisconnectWallet}>
 				{isConnected ? `Disconnect ${shortAddress(String(address))}` : "Connect Wallet"}
 			</Button>
 		</Flex>

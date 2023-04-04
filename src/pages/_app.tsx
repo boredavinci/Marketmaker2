@@ -11,7 +11,7 @@ import 'react-calendar/dist/Calendar.css'
 import 'styles/MiniCalendar.css'
 import Head from 'next/head'
 
-import { WagmiConfig, createClient,configureChains, mainnet, goerli } from 'wagmi';
+import { WagmiConfig, createClient, configureChains, mainnet, goerli } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public'
 
 const { provider, webSocketProvider } = configureChains(
@@ -24,7 +24,7 @@ const client = createClient({
   webSocketProvider,
 })
 
-function MyApp ({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Head>
@@ -33,10 +33,9 @@ function MyApp ({ Component, pageProps }: AppProps) {
         <meta name='theme-color' content='#000000' />
       </Head>
       <React.StrictMode>
-    <WagmiConfig client={client}>
-
-        <Component {...pageProps} />
-    </WagmiConfig>
+        <WagmiConfig client={client}>
+          <Component {...pageProps} />
+        </WagmiConfig>
       </React.StrictMode>
     </ChakraProvider>
   )

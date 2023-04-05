@@ -56,6 +56,7 @@ import { tableColumnsTopCreators } from 'views/admin/marketplace/variables/table
 import AdminLayout from 'layouts/admin'
 import { TableData } from 'views/admin/default/variables/columnsData'
 import NextLink from 'next/link'
+import MyCard from 'components/card/MyCard'
 
 export default function NftMarketplace() {
   // Chakra Color Mode
@@ -66,171 +67,16 @@ export default function NftMarketplace() {
       <Box pt={{ base: '180px', md: '80px', xl: '80px' }}>
         <Flex direction='column'>
           <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px' mb='20px'>
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
+            <MyCard />
+            <MyCard />
+            <MyCard />
+            <MyCard />
+            <MyCard />
+            <MyCard />
+            <MyCard />
+            <MyCard />
+            <MyCard />
 
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-          </SimpleGrid>
-          <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px' mb='20px'>
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-          </SimpleGrid>
-          <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px' mb='20px'>
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
-
-            <NFT
-              name=' Eth - USDC Arbitrage Strategy'
-              author='By Esthera Jackson'
-              bidders={[
-                Avatar1,
-                Avatar2,
-                Avatar3,
-                Avatar4,
-                Avatar1,
-                Avatar1,
-                Avatar1,
-                Avatar1
-              ]}
-              image={Nft1}
-              currentbid='379 ETH'
-              download='#'
-            />
 
           </SimpleGrid>
         </Flex>

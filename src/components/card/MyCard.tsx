@@ -10,10 +10,77 @@ import {
 } from '@chakra-ui/react';
 import LineChart from 'components/charts/LineChart';
 import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from 'variables/charts';
+import { ethers } from 'ethers';
+import { usePrepareContractWrite, useContractWrite, useNetwork, useAccount, useSigner } from 'wagmi';
+// import * as strategyJson from "./../assets/Strategy.json"; // #TODO: add a Strategy.json
+import { useState } from "react";
 
+let provider: ethers.providers.Provider;
+let strategyContract: ethers.Contract;
+let tokenContract: ethers.Contract;
 
+export default function MyCard({ apiKey, tokenRatio }: any) {
 
-export default function MyCard() {
+  provider = new ethers.providers.EtherscanProvider(
+    'goerli',
+    apiKey,
+  )
+
+  const strategyContractAddress = String(process.env.PUBLIC_CONTRACT_ADDRESS);
+
+  strategyContract = new ethers.Contract(
+    strategyContractAddress,
+    strategyJson.abi, // #TODO import Strategy.json
+    provider,
+  );
+
+  const { chain } = useNetwork();
+  const { address, isConnected } = useAccount();
+
+  const [requestLot, setRequestLot] = useState("");
+
+  const { config } = usePrepareContractWrite({
+    address: strategyContractAddress as any,
+    abi: strategyJson.abi, // #TODO import Strategy.json
+    functionName: "purchaseTokens",
+    chainId: chain?.id,
+    args: [
+      {
+        value: requestLot ? ethers.utils.parseEther(requestLot).div(tokenRatio) : 0,
+      }
+    ]
+  })
+  const contractWrite = useContractWrite(config);
+
+  const purchaseTokens = async () => {
+    try {
+      console.log(config)
+      console.log("Ready to transact?", contractWrite.write)
+      const data = await contractWrite.writeAsync?.()
+      console.log("Data", data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const { data: signer } = useSigner();
+
+  const deposit = async () => {
+    if (signer) {
+      try {
+        const strategyWrite = strategyContract.connect(signer);
+        const currentBlock = await provider.getBlock("latest");
+        console.log("Current block: " + currentBlock);
+
+        const tx = await strategyWrite.deposit();
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      alert("Connect your wallet first")
+    }
+  }
+
   return (
     <Center py={12}>
       <Box
@@ -83,7 +150,8 @@ export default function MyCard() {
             _hover={{
               transform: 'translateY(-2px)',
               boxShadow: 'lg',
-            }}>
+            }}
+            onClick={async () => await deposit()}>
             Invest Now
           </Button>
 

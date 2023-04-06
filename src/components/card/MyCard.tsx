@@ -13,21 +13,31 @@ import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from 'variables/c
 import * as contractJson from 'assets/contract-abi.json';
 
 import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi';
-
+import { CONTRACT_ADDRESS } from 'types/constants';
 
 export default function MyCard() {
 
   // const { isConnected } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: '0x45992EAaB1D6347bB89df28c43d1077bA4EdfB0e',
+    address: CONTRACT_ADDRESS,
     abi: contractJson.abi,
-    functionName: 'purchaseTokens',
+    functionName: 'deposit',
+    chainId: 5,
+    args: [100, 'USDC'],
   });
 
 
-  const { write: purchaseTokens } = useContractWrite(config);
+  const contractWrite = useContractWrite(config);
 
+  const deposit = async() => {
+    try {
+      const data = await contractWrite.writeAsync?.();
+      console.log(data)
+    } catch(e) {
+      console.log(e)
+    }
+  }
 
   return (
     <Center py={12}>
@@ -82,7 +92,7 @@ export default function MyCard() {
             color={'white'}
             rounded={'full'}
             size={'lg'}
-            onClick={() => purchaseTokens?.()}
+            onClick={async () => await deposit()} 
             _hover={{
               transform: 'translateY(-2px)',
               boxShadow: 'lg',

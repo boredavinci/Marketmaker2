@@ -44,7 +44,6 @@ export default function CreateStrategy() {
             <FormControl>
               <FormLabel>Strategy Name</FormLabel>
               <Input placeholder='Strategy Name' />
-
               <FormLabel mt={5} >Strategy description</FormLabel>
               <Textarea placeholder='Strategy Description' />
 

@@ -11,11 +11,52 @@ import {
 
 import LineChart from 'components/charts/LineChart';
 import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from 'variables/charts';
+import * as contractJson from 'assets/contract-abi.json';
 
 
 import AdminLayout from 'layouts/admin';
+import { CONTRACT_ADDRESS } from 'types/constants';
+import { useAccount, useContractWrite, usePrepareContractWrite } from 'wagmi';
 
 export default function Arbitrage() {
+	const { address, isConnected } = useAccount()
+  const { config } = usePrepareContractWrite({
+    address: CONTRACT_ADDRESS,
+    abi: contractJson.abi,
+    functionName: "start",
+    chainId: 5,
+    args: [],
+  });
+  const contractWrite = useContractWrite(config);
+
+  const stopConfig = usePrepareContractWrite({
+    address: CONTRACT_ADDRESS,
+    abi: contractJson.abi,
+    functionName: "stop",
+    chainId: 5,
+    args: [],
+  }).config
+
+  const contractWriteStop = useContractWrite(stopConfig) 
+  
+  const startStrategy = async() => {
+    try {
+      const data = await contractWrite.writeAsync?.();
+      console.log(data)
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  const stopStrategy = async() => {
+    try {
+      const data = await contractWriteStop.writeAsync?.();
+      console.log(data)
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   return (
     <AdminLayout>
       <Container maxW={'7xl'}>
@@ -75,13 +116,17 @@ export default function Arbitrage() {
                 size={'lg'}
                 px={6}
                 colorScheme={'brand'}
+                disabled={!isConnected}
+                onClick={async() => await startStrategy()}
               >
-                Start strategy
+                Start Strategy
               </Button>
               <Button
                 rounded={'full'}
                 size={'lg'}
                 fontWeight={'normal'}
+                disabled={!isConnected}
+                onClick={async() => await stopStrategy()}
                 px={6}>
                 Stop strategy
               </Button>

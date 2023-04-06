@@ -91,8 +91,8 @@ export default function UserReports() {
                   }
                 />
               }
-              name='Earnings'
-              value='$350.4'
+              name='Total Value Locked'
+              value='$3,250,293.25'
             />
             <MiniStatistics
               startContent={
@@ -110,65 +110,10 @@ export default function UserReports() {
                   }
                 />
               }
-              name='Spend this month'
-              value='$642.39'
+              name='Total Value this month'
+              value='$642,339.00'
             />
-            <MiniStatistics growth='+23%' name='Sales' value='$574.34' />
-            <MiniStatistics
-              endContent={
-                <Flex me='-16px' mt='10px'>
-                  <FormLabel htmlFor='balance'>
-                    <Box boxSize={'12'}>
-                      <Image src={Usa} alt='' w={'100%'} h={'100%'} />
-                    </Box>
-                  </FormLabel>
-                  <Select
-                    id='balance'
-                    variant='mini'
-                    mt='5px'
-                    me='0px'
-                    defaultValue='usd'
-                  >
-                    <option value='usd'>USD</option>
-                    <option value='eur'>EUR</option>
-                    <option value='gba'>GBA</option>
-                  </Select>
-                </Flex>
-              }
-              name='Your balance'
-              value='$1,000'
-            />
-            <MiniStatistics
-              startContent={
-                <IconBox
-                  w='56px'
-                  h='56px'
-                  bg='linear-gradient(90deg, #4481EB 0%, #04BEFE 100%)'
-                  icon={<Icon w='28px' h='28px' as={MdAddTask} color='white' />}
-                />
-              }
-              name='New Tasks'
-              value='154'
-            />
-            <MiniStatistics
-              startContent={
-                <IconBox
-                  w='56px'
-                  h='56px'
-                  bg={boxBg}
-                  icon={
-                    <Icon
-                      w='32px'
-                      h='32px'
-                      as={MdFileCopy}
-                      color={brandColor}
-                    />
-                  }
-                />
-              }
-              name='Total Projects'
-              value='2935'
-            />
+            <MiniStatistics growth='+23%' name='Today' value='$57,434' />
           </SimpleGrid>
 
           <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>

@@ -26,7 +26,7 @@ import Menu from 'components/menu/MainMenu'
 // Assets
 import { MdCheckCircle, MdCancel, MdOutlineError } from 'react-icons/md'
 import { TableProps } from '../variables/columnsData'
-export default function ColumnsTable (props: TableProps) {
+export default function ColumnsTable(props: TableProps) {
   const { columnsData, tableData } = props
 
   const columns = useMemo(() => columnsData, [columnsData])
@@ -68,7 +68,7 @@ export default function ColumnsTable (props: TableProps) {
           fontWeight='700'
           lineHeight='100%'
         >
-          Complex Table
+          New Strategy
         </Text>
         <Menu />
       </Flex>
@@ -120,19 +120,19 @@ export default function ColumnsTable (props: TableProps) {
                             cell.value === 'Approved'
                               ? 'green.500'
                               : cell.value === 'Disable'
-                              ? 'red.500'
-                              : cell.value === 'Error'
-                              ? 'orange.500'
-                              : null
+                                ? 'red.500'
+                                : cell.value === 'Error'
+                                  ? 'orange.500'
+                                  : null
                           }
                           as={
                             cell.value === 'Approved'
                               ? MdCheckCircle
                               : cell.value === 'Disable'
-                              ? MdCancel
-                              : cell.value === 'Error'
-                              ? MdOutlineError
-                              : null
+                                ? MdCancel
+                                : cell.value === 'Error'
+                                  ? MdOutlineError
+                                  : null
                           }
                         />
                         <Text color={textColor} fontSize='sm' fontWeight='700'>

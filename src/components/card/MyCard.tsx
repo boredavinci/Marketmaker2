@@ -23,11 +23,21 @@ export default function MyCard() {
     address: CONTRACT_ADDRESS,
     abi: contractJson.abi,
     functionName: 'deposit',
+    chainId: 5,
+    args: [100, 'USDC'],
   });
 
 
-  const { write: purchaseTokens } = useContractWrite(config);
+  const contractWrite = useContractWrite(config);
 
+  const deposit = async() => {
+    try {
+      const data = await contractWrite.writeAsync?.();
+      console.log(data)
+    } catch(e) {
+      console.log(e)
+    }
+  }
 
   return (
     <Center py={12}>
@@ -82,7 +92,7 @@ export default function MyCard() {
             color={'white'}
             rounded={'full'}
             size={'lg'}
-            onClick={() => purchaseTokens?.()}
+            onClick={async () => await deposit()} 
             _hover={{
               transform: 'translateY(-2px)',
               boxShadow: 'lg',

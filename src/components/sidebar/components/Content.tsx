@@ -18,7 +18,7 @@ function SidebarContent(props: SidebarContentProps) {
 	return (
 		<Flex direction='column' height='100%' pt='25px' borderRadius='30px'>
 
-			<Heading ps='20px'>	Market  maker 2</Heading>
+			<Heading ps='20px'>	GridMaker</Heading>
 			<Stack direction='column' mt='8px' mb='auto'>
 				<Box ps='20px' pe={{ lg: '16px', '2xl': '16px' }}>
 					<Links routes={routes} />

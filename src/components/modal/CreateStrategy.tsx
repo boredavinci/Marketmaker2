@@ -1,7 +1,18 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, useDisclosure, FormControl, FormLabel, Input, Textarea, Select, Box } from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, useDisclosure, FormControl, FormLabel, Input, Textarea, SimpleGrid, Box, Select, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Stack, Switch } from '@chakra-ui/react';
+import { useState } from 'react';
 
 
 export default function CreateStrategy() {
+
+  const [sliderValue, setSliderValue] = useState(50)
+
+  const labelStyles = {
+    mt: '2',
+    ml: '-2.5',
+    fontSize: 'sm',
+  }
+
+
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -33,29 +44,61 @@ export default function CreateStrategy() {
             <FormControl>
               <FormLabel>Strategy Name</FormLabel>
               <Input placeholder='Strategy Name' />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>Token Pairs</FormLabel>
-              <Box display="grid" gridGap={2} gridColumn={2} gridAutoFlow="row dense">
-                <Select name='pair1' className='inline'>
-                  <option>Token1</option>
-                  <option>ETH</option>
-                  <option>USDC</option>
-                  <option>USDT</option>
-                </Select>
-                <Select name='pair2' className='inline'>
-                  <option>Token2</option>
-                  <option>ETH</option>
-                  <option>USDC</option>
-                  <option>USDT</option>
-                </Select>
-              </Box>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Strategy description</FormLabel>
+              <FormLabel mt={5} >Strategy description</FormLabel>
               <Textarea placeholder='Strategy Description' />
+
+
+              <SimpleGrid columns={2} spacing={2} mt={5}>
+                <Box>
+                  <FormLabel>Token</FormLabel>
+                  <Select placeholder='Select option'>
+                    <option value='option1'>ETH</option>
+                    <option value='option2'>BTC</option>
+                    <option value='option3'>USDC</option>
+                  </Select>
+                </Box>
+                <Box>
+                  <FormLabel>Token</FormLabel>
+                  <Select placeholder='Select option'>
+                    <option value='option1'>ETH</option>
+                    <option value='option2'>BTC</option>
+                    <option value='option3'>USDC</option>
+                  </Select>
+                </Box>
+              </SimpleGrid>
+              <SimpleGrid columns={2} mt={5}>
+                <Button colorScheme='brand' mr={3} rounded={'full'} size={'lg'} variant='outline'>
+                  Buy
+                </Button>
+                <Button colorScheme='brand' mr={3} rounded={'full'} size={'lg'} variant='outline'>
+                  Sell
+                </Button>
+              </SimpleGrid>
+
+
+              <Box pt={6} pb={2}>
+                <Slider aria-label='slider-ex-6' onChange={(val) => setSliderValue(val)}>
+                  <SliderMark value={25} {...labelStyles}>
+                    -.05%
+                  </SliderMark>
+                  <SliderMark value={50} {...labelStyles}>
+                    0
+                  </SliderMark>
+                  <SliderMark value={75} {...labelStyles}>
+                    +.05%
+                  </SliderMark>
+
+                  <SliderTrack>
+                    <SliderFilledTrack />
+                  </SliderTrack>
+                  <SliderThumb />
+                </Slider>
+              </Box>
+
+              <FormLabel>Price</FormLabel>
+              <Input placeholder='Enter Price' />
+
+
             </FormControl>
           </ModalBody>
 
@@ -66,7 +109,7 @@ export default function CreateStrategy() {
             <Button onClick={onClose} rounded={'full'} size={'lg'}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal >
     </>
   )
 }

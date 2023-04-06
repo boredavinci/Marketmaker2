@@ -5,15 +5,30 @@ import {
   Heading,
   Text,
   Stack,
-  Image,
   Button
 } from '@chakra-ui/react';
 import LineChart from 'components/charts/LineChart';
 import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from 'variables/charts';
 
+import * as contractJson from 'assets/contract-abi.json';
+
+import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi';
 
 
 export default function MyCard() {
+
+  // const { isConnected } = useAccount();
+
+  const { config } = usePrepareContractWrite({
+    address: '0x55e2363e76A613B44D3C19A1bC87FBeAfb7F6159',
+    abi: contractJson.abi,
+    functionName: 'purchaseTokens',
+  });
+
+
+  const { write: purchaseTokens } = useContractWrite(config);
+
+
   return (
     <Center py={12}>
       <Box
@@ -48,21 +63,9 @@ export default function MyCard() {
               filter: 'blur(20px)',
             },
           }}>
-
           <Box minH='260px' minW='75%' mt='auto'>
             <LineChart chartData={lineChartDataTotalSpent} chartOptions={lineChartOptionsTotalSpent} />
           </Box>
-
-
-
-
-          {/* <Image
-            rounded={'lg'}
-            height={230}
-            width={282}
-            objectFit={'cover'}
-            src={IMAGE}
-          /> */}
         </Box>
         <Stack pt={10} align={'center'}>
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
@@ -72,7 +75,6 @@ export default function MyCard() {
             Arbitrage Strategy
           </Heading>
 
-
           <Button
             w={'full'}
             mt={8}
@@ -80,13 +82,13 @@ export default function MyCard() {
             color={'white'}
             rounded={'full'}
             size={'lg'}
+            onClick={() => purchaseTokens?.()}
             _hover={{
               transform: 'translateY(-2px)',
               boxShadow: 'lg',
             }}>
             Invest Now
           </Button>
-
 
         </Stack>
       </Box>

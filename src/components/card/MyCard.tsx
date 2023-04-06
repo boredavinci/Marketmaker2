@@ -13,14 +13,14 @@ import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from 'variables/c
 import * as contractJson from 'assets/contract-abi.json';
 
 import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi';
-
+import { CONTRACT_ADDRESS } from 'types/constants';
 
 export default function MyCard() {
 
   // const { isConnected } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: '0x9BB7BBfF72ED07dD703428C8D92D94Be954Fa169',
+    address: CONTRACT_ADDRESS,
     abi: contractJson.abi,
     functionName: 'purchaseTokens',
   });

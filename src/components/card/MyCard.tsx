@@ -20,7 +20,7 @@ export default function MyCard() {
   // const { isConnected } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: '0x55e2363e76A613B44D3C19A1bC87FBeAfb7F6159',
+    address: '0x9BB7BBfF72ED07dD703428C8D92D94Be954Fa169',
     abi: contractJson.abi,
     functionName: 'purchaseTokens',
   });

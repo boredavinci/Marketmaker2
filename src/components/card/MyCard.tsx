@@ -22,7 +22,7 @@ export default function MyCard() {
   const { config } = usePrepareContractWrite({
     address: CONTRACT_ADDRESS,
     abi: contractJson.abi,
-    functionName: 'purchaseTokens',
+    functionName: 'deposit',
   });
 
 

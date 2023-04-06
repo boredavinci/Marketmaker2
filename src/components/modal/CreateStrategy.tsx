@@ -104,7 +104,7 @@ export default function CreateStrategy() {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='brand' mr={3} rounded={'full'} size={'lg'}>
+            <Button colorScheme='brand' mr={3} rounded={'full'} size={'lg'} onClick={() => alert("Your strategy has been created")}>
               Create
             </Button>
             <Button onClick={onClose} rounded={'full'} size={'lg'}>Cancel</Button>
